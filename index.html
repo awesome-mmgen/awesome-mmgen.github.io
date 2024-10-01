@@ -269,45 +269,19 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="https://arxiv.org/abs/2409.20196">Paper</a></li>
-                <li><a href="https://github.com/WangHaoyuuu/Awesome-Music-Generation">GitHub</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" style="font-size: 25px;">Home</a></li>
+                <li><a href="https://arxiv.org/abs/2409.20196" style="font-size: 25px;">Paper</a></li>
+                <li><a href="https://github.com/WangHaoyuuu/Awesome-Music-Generation" style="font-size: 25px;">GitHub</a></li>
+                <li><a href="#contact" style="font-size: 25px;">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="top-section">
         <div class="top-content">
-            <h1 style="background-color: rgba(98, 0, 234, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center;">MMGEN: Melody Is All You Need For Music Generation</h1>
+            <h1 style="background-color: rgba(98, 0, 234, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center;">MMGen: Melody Is All You Need For Music Generation</h1>
             <div class="carousel-section">
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <div class="carousel-item">
-                            <img src="./images/1.jpg" alt="欢迎图片1">
-                            <div class="carousel-caption">
-                                <h3>探索音乐世界</h3>
-                                <p>发现新的音乐风格和艺术家</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/2.jpg" alt="欢迎图片2">
-                            <div class="carousel-caption">
-                                <h3>分享您的热情</h3>
-                                <p>加入我们的音乐社区</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/3.jpg" alt="欢迎图片3">
-                            <div class="carousel-caption">
-                                <h3>体验音乐魅力</h3>
-                                <p>让音乐丰富您的生活</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-button prev">&lt;</button>
-                    <button class="carousel-button next">&gt;</button>
-                </div>
+                <img src="./images/MMgen_Framework.png" alt="Model Structure" style="max-width: 100%; height: auto;">
             </div>
         </div>
     </div>
@@ -316,22 +290,30 @@
         <section id="home">
             <h2>Abstract</h2>
             <!-- 在这里添加Abstract的内容 -->
-            We present the Melody Guided Music Generation (MMGen) model, the first novel approach using melody to guide the music generation that, despite a pretty simple method and extremely limited resources, achieves excellent performance. Specifically, we first align the melody with audio waveforms and their associated descriptions using the multimodal alignment module. Subsequently, we condition the diffusion module on the learned melody representations. This allows MMGen to generate music that matches the style of the provided audio while also producing music that reflects the content of the given text description.
+            <div style="font-size: 20px;">
+              We present the <strong>M</strong>elody Guided <strong>M</strong>usic <strong>Gen</strong>eration (<strong>MMGen</strong>) model, the first novel approach using melody to guide the music generation that, despite a pretty simple method and extremely limited resources, achieves excellent performance. Specifically, we first align the melody with audio waveforms and their associated descriptions using the multimodal alignment module. Subsequently, we condition the diffusion module on the learned melody representations. This allows MMGen to generate music that matches the style of the provided audio while also producing music that reflects the content of the given text description.
             To address the scarcity of high-quality data, we construct a multi-modal dataset, MusicSet, which includes melody, text, and audio, and will be made publicly available. We conduct extensive experiments which demonstrate the superiority of the proposed model both in terms of experimental metrics and actual performance quality.
 
-            <h2>Model structure</h2>
+            <h2>Results</h2>
             <!-- 在这里添加Model structure的内容 -->
-            <img src="./images/MMgen_Framework.png" alt="Model Structure" style="max-width: 100%; height: auto;">
+            <div style="display: flex; justify-content: center;">
+                <img src="./images/diffusion.png" alt="Results" style="width: 700px; height: auto;">
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <img src="./images/clap.png" alt="Results" style="width: 750px; height: auto;">
+            </div>
 
-            
             <div class="music-comparison">
-                <h2>Music comparison example</h2>
-                <h3>Examples of prompts generated by ChatGPT-4o</h3>
+                <h2>Music comparison examples</h2>
+                <div style="display: flex; justify-content: center;">
+                    <h3>Examples of prompts randomly generated by ChatGPT-4o</h3>
+                </div>
+                
                 <table>
                     <thead>
                         <tr>
                             <th class="center-text">Prompt</th>
-                            <th style="width: 25%;">MMGEN</th>
+                            <th style="width: 25%;">MMGen</th>
                             <th style="width: 25%;">AudioLDM2-music</th>
                             <th style="width: 25%;">Mustango</th>
                         </tr>
@@ -428,7 +410,7 @@
                         </tr>
                         
                         <tr>
-                            <td style="word-wrap: break-word; max-width: 150px; text-align: center;">Generate a high quality, smooth, and_slow paced piece of classical music.</td>
+                            <td style="word-wrap: break-word; max-width: 150px; text-align: center;">Generate a high quality, smooth, and slow paced piece of classical music.</td>
                             <td>
                                 <audio controls src="./audio/ours_wav/musiccaps/Generate_a_high-quality,_smooth,_and_slow-paced_piece_of_classical_music..wav"></audio>
                             </td>
@@ -445,13 +427,15 @@
                         
                     </tbody>
                 </table>
-
-                <h3>Examples of prompts in MusicCaps</h3>
+                <div style="display: flex; justify-content: center;">
+                    <h3>Examples of prompts in MusicCaps</h3>
+                </div>
+                
                 <table>
                     <thead>
                         <tr>
                             <th class="center-text">Prompt</th>
-                            <th style="width: 25%;">MMGEN</th>
+                            <th style="width: 25%;">MMGen</th>
                             <th style="width: 25%;">AudioLDM2-music</th>
                             <th style="width: 25%;">Mustango</th>
                         </tr>
@@ -555,7 +539,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 音乐乐园. 保留所有权利。</p>
+        <p>&copy; 2024 All rights reserved. Commercial use without permission is prohibited.</p>
     </footer>
 
     <script>
