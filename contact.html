@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMGEN - Melody is all your need for music generation</title>
+    <style>
+        :root {
+            --primary-color: #6200EA;
+            --secondary-color: #03DAC6;
+            --accent-color: #FFD700;
+            --text-color: #333333;
+            --background-color: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('./images/background-image.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            padding-top: 60px; /* 为固定导航栏留出空间 */
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 60px; /* 设置固定高度 */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: var(--background-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+            flex-grow: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+        }
+
+        .recommended-playlists, .popular-artists, .news-updates {
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+        }
+
+        .carousel-section {
+            background-color: rgba(98, 0, 234, 0.1);
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            height: 300px;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 5px solid var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(98, 0, 234, 0.3);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            max-width: 50%;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        .song-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .song-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .song-info {
+            flex-grow: 1;
+        }
+
+        .play-button, .pause-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .artist-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .artist-item {
+            width: 48%;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: rgba(98, 0, 234, 0.1);
+        }
+
+        .artist-item h3 {
+            margin-top: 0;
+        }
+
+        .top-section {
+            background-color: #F5F5F5; /* 更改为浅灰色 */
+            padding: 20px 0;
+            margin-top: 60px; /* 与 header 高度相同 */
+            width: 100%;
+        }
+
+        .top-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        main {
+            flex-grow: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--background-color);
+        }
+
+        .carousel-section {
+            background-color: transparent; /* 移除之前的背景色 */
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .music-comparison {
+            background-color: #f5f5f5;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-comparison table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .music-comparison th, .music-comparison td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .music-comparison th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .music-comparison td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .music-comparison audio {
+            width: 100%;
+            max-width: 300px;
+            margin-top: 0.5rem;
+        }
+
+        .music-comparison h4 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .results-and-comparison {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" style="font-size: 25px;">Home</a></li>
+                <li><a href="https://arxiv.org/abs/2409.20196" style="font-size: 25px;">Paper</a></li>
+                <li><a href="https://github.com/WangHaoyuuu/Awesome-Music-Generation" style="font-size: 25px;">GitHub</a></li>
+                <li><a href="./contact.html" style="font-size: 25px;">Research Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="top-section">
+        <div class="top-content">
+            <h1 style="background-color: rgba(98, 0, 234, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center;">MMGen: Melody Is All You Need For Music Generation</h1>
+            <div class="carousel-section">
+                <img src="./images/MMgen_Framework.png" alt="Model Structure" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="home">
+            <h2>Contact Us</h2>
+            
+            <div class="team-members">
+                <h3>Shaopeng Wei</h3>
+                <img src="./images/wsp.png" alt="Model Structure" style="max-width: 15%; height: 25;">
+                <p>Shaopeng Wei received the B.S. degree from Huazhong Agricultural University in 2019, and Ph.D. degree from Southwestern University of Finance and Economics in 2024. He is currently an Assistant Professor with Guangxi University. His research interests include multimodal LLM, graph learning and relevant applications in Fintech. He has published papers on top journals, such as IEEE TKDE.</p>
+                <p>e-mail: shaopeng.wei@gxu.edu.cn</p>
+                
+                <h3>Manzhen Wei</h3>
+                <img src="./images/wmz.jpg" alt="Model Structure" style="max-width: 15%; height: auto;">
+                <p>MS student, School of Computing and Artificial intelligence, Southwestern University of Finance and Economics. The research field is multimodal large models, with a current focus on music/speech generation large models.</p>
+                <p>e-mail: weimanzhen5@gmail.com</p>
+                <p>WeChat: w1144053018</p>
+
+                <h3>Haoyu Wang</h3>
+                <img src="./images/why.jpg" alt="Model Structure" style="max-width: 15%; height: auto;">
+                <p>MS student, School of Computing and Artificial intelligence, Southwestern University of Finance and Economics</p>
+                <p>e-mail: mailwhaoyu@gmail.com</p>
+                
+                <h3>Yu Zhao</h3>
+                <img src="./images/zy.png" alt="Model Structure" style="max-width: 25%; height: auto;">
+                <p>Yu Zhao received the B.S. degree from Southwest Jiaotong University in 2006, and Ph.D. degrees from the Beijing University of Posts and Telecommunications in 2017. He is currently a full Professor at Southwestern University of Finance and Economics. His current research interests include machine learning, NLP, knowledge graph, Fintech. He has authored more than 30 papers in top journals and conferences including IEEE TKDE, IEEE TNNLS, IEEE TMC, KDD, ACL, ICME, etc.</p>
+                
+                <h3>Gang Kou</h3>
+                <img src="./images/kg.png" alt="Model Structure" style="max-width: 15%; height: auto;">
+                <p>Gang Kou is a Distinguished Professor of Chang Jiang Scholars Program in Southwestern University of Finance and Economics. He received his Ph.D. in Univ. of Nebraska at Omaha and B.S. degree in Tsinghua University, China. He has published more than 100 papers in various peer-reviewed journals. Gang Kou’s h-index is 72 and his papers have been cited for more than 20000 times. He is listed as the Highly Cited Researcher by Clarivate Analytics (Web of Science).</p>
+            </div>
+            
+            <p>Team: For more information about our research team, please visit our <a href="https://www.swufenlp.group/" target="_blank" rel="noopener noreferrer">team website</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 All rights reserved. Commercial use without permission is prohibited.</p>
+    </footer>
+
+    </script>
+</body>
+</html>
