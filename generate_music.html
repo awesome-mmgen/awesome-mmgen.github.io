@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to MMGen</title>
+    <style>
+        :root {
+            --primary-color: #6200EA;
+            --secondary-color: #03DAC6;
+            --accent-color: #FFD700;
+            --text-color: #333333;
+            --background-color: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-top: 60px; /* 为固定导航栏留出空间 */
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 60px; /* 设置固定高度 */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: var(--background-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+            flex-grow: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center; /* 设置文本居中 */
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            text-align: center; /* 设置文本居中 */
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://awesome-mmgen.github.io/" style="font-size: 25px;">Home</a></li>
+                <li><a href="https://arxiv.org/abs/2409.20196" style="font-size: 25px;">Paper</a></li>
+                <li><a href="https://github.com/shaopengw/Awesome-Music-Generation" style="font-size: 25px;">GitHub</a></li>
+                <li><a href=""https://awesome-mmgen.github.io/generate_music.html" style="font-size: 25px;">Generate Your Music </a></li>
+                <li><a href="https://awesome-mmgen.github.io/contact.html" style="font-size: 25px;">Research Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to MMGen</h1>
+        <h2>The system is under maintenance and upgrade, please wait patiently.</h2>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 All rights reserved. Commercial use without permission is prohibited.</p>
+    </footer>
+</body>
+</html>
